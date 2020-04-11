@@ -1,13 +1,21 @@
 package io.github.kaczmarek.delishki.ui.task.details
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import io.github.kaczmarek.delishki.R
+import io.github.kaczmarek.delishki.ui.base.BaseActivity
+import io.github.kaczmarek.delishki.ui.base.BaseView
 
-class DetailsActivity : AppCompatActivity() {
+interface TaskDetailsView : BaseView
+
+class TaskDetailsActivity : BaseActivity(R.layout.activity_details), TaskDetailsView,
+    View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+    }
+
+    override fun onClick(v: View?) {
+
     }
 }

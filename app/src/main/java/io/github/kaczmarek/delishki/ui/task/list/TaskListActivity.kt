@@ -1,32 +1,25 @@
 package io.github.kaczmarek.delishki.ui.task.list
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.View
 import io.github.kaczmarek.delishki.R
 import io.github.kaczmarek.delishki.domain.task.entity.Task
+import io.github.kaczmarek.delishki.ui.base.BaseActivity
+import io.github.kaczmarek.delishki.ui.base.BaseView
 import kotlinx.android.synthetic.main.activity_list.*
 
-class ListActivity : AppCompatActivity() {
+interface TaskListView : BaseView
+
+class TaskListActivity : BaseActivity(R.layout.activity_list), TaskListView,
+    View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
         val showTaskType = intent.getStringExtra(KEY_TYPE_TASKS) ?: Task.TODAY
         showContent(showTaskType)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun showContent(showTaskType: String) {
@@ -44,6 +37,10 @@ class ListActivity : AppCompatActivity() {
                 iv_list_image_type.setImageResource(R.drawable.ic_vector_today_purple)
             }
         }
+    }
+
+    override fun onClick(v: View?) {
+
     }
 
     companion object {

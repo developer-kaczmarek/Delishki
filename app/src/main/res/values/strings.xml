@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">Delishki</string>
+    <string name="app_name">Делишки</string>
+
+    <string name="common_today">Сегодня</string>
+    <string name="common_plan">Планы</string>
+    <string name="common_anytime">В любое время</string>
+    <string name="common_someday">Когда-нибудь</string>
+    <plurals name="common_tasks">
+        <item quantity="zero">%d заметка</item>
+        <item quantity="one">%d заметки</item>
+        <item quantity="two">%d заметки</item>
+        <item quantity="few">%d заметки</item>
+        <item quantity="many">%d заметок</item>
+        <item quantity="other">%d заметки</item>
+    </plurals>
+
+    <string name="content_description_tasks_card">Изображение карточки</string>
+
+    <string name="activity_main_good_morning">Доброе утро</string>
+    <string name="activity_main_good_afternoon">Добрый день</string>
+    <string name="activity_main_good_evening">Добрый вечер</string>
+    <string name="activity_main_good_night">Доброй ночи</string>
+    <string name="activity_main_hello">Здравствуйте</string>
+    <string name="activity_main_add_task">добавить</string>
 </resources>

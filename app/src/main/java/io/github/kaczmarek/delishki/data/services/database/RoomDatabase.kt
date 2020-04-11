@@ -13,18 +13,28 @@ import io.github.kaczmarek.delishki.data.services.database.models.entities.TaskE
     ]
     , version = 1
 )
-abstract class DatabaseService : RoomDatabase() {
+abstract class RoomDatabase : RoomDatabase(), IDatabase {
 
     abstract fun taskDao(): TaskDao
+
+    override suspend fun getTasks(): List<TaskEntity> = taskDao().getAll()
+
+    override suspend fun saveTask(task: TaskEntity) {
+        taskDao().save(task)
+    }
 
     companion object {
 
         private const val DB_NAME = "delishki_db"
 
-        fun getDatabase(context: Context): DatabaseService {
+        fun getDatabase(context: Context): io.github.kaczmarek.delishki.data.services.database.RoomDatabase {
 
             synchronized(this) {
-                return Room.databaseBuilder(context, DatabaseService::class.java, DB_NAME)
+                return Room.databaseBuilder(
+                    context,
+                    io.github.kaczmarek.delishki.data.services.database.RoomDatabase::class.java,
+                    DB_NAME
+                )
                     .allowMainThreadQueries()
                     .build()
             }
