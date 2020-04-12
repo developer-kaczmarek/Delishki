@@ -8,4 +8,6 @@ interface IDatabase {
 
     suspend fun saveTask(task: TaskEntity)
 
+    suspend fun getCountTasks(taskType: String): Int
+
 }

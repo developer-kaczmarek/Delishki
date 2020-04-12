@@ -14,6 +14,14 @@
         <item quantity="other">%d заметки</item>
     </plurals>
 
+    <string name="common_monday">Пн</string>
+    <string name="common_tuesday">Вт</string>
+    <string name="common_wednesday">Ср</string>
+    <string name="common_thursday">Чт</string>
+    <string name="common_friday">Пт</string>
+    <string name="common_saturday">Сб</string>
+    <string name="common_sunday">Вс</string>
+
     <string name="content_description_tasks_card">Изображение карточки</string>
 
     <string name="activity_main_good_morning">Доброе утро</string>

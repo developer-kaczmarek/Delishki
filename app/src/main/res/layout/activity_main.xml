@@ -115,6 +115,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_main_count_today_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
@@ -166,6 +167,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_main_count_plan_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
@@ -217,6 +219,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_main_count_anytime_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
@@ -268,6 +271,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_main_count_someday_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"

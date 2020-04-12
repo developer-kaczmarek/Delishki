@@ -2,6 +2,7 @@ package io.github.kaczmarek.delishki
 
 import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
+import com.jakewharton.threetenabp.AndroidThreeTen
 import io.github.kaczmarek.delishki.di.DIManager
 import io.github.kaczmarek.delishki.di.components.DaggerAppComponent
 import io.github.kaczmarek.delishki.util.Utils
@@ -18,5 +19,7 @@ class App : MultiDexApplication() {
         Stetho.initializeWithDefaults(applicationContext)
 
         Utils.init(this)
+
+        AndroidThreeTen.init(this)
     }
 }

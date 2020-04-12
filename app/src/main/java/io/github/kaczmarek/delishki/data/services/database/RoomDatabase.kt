@@ -23,6 +23,8 @@ abstract class RoomDatabase : RoomDatabase(), IDatabase {
         taskDao().save(task)
     }
 
+    override suspend fun getCountTasks(taskType: String): Int = taskDao().getCount(taskType)
+
     companion object {
 
         private const val DB_NAME = "delishki_db"

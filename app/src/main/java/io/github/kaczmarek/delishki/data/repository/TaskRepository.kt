@@ -13,6 +13,8 @@ class TaskRepository(
     suspend fun saveTask(task: Task) {
         database.saveTask(mapper.map(task))
     }
+
+    suspend fun getCountTasks(taskType: String): Int = database.getCountTasks(taskType)
 }
 
 interface ITaskMapper {

@@ -17,7 +17,14 @@ import moxy.ktx.moxyPresenter
 import java.text.SimpleDateFormat
 import java.util.*
 
-interface MainView : BaseView
+interface MainView : BaseView {
+    fun showCountTasks(
+        countTodayTasks: Int,
+        countPlanTasks: Int,
+        countAnytimeTasks: Int,
+        countSomedayTasks: Int
+    )
+}
 
 class MainActivity : BaseActivity(R.layout.activity_main), MainView, View.OnClickListener {
     private val presenter by moxyPresenter { MainPresenter() }
@@ -32,6 +39,7 @@ class MainActivity : BaseActivity(R.layout.activity_main), MainView, View.OnClic
         cv_main_anytime_tasks.setOnClickListener(this)
         cv_main_someday_tasks.setOnClickListener(this)
         fab_main_add_task.setOnClickListener(this)
+        presenter.getCountTasks()
     }
 
     private fun getGreetingMessage(): String {
@@ -73,5 +81,33 @@ class MainActivity : BaseActivity(R.layout.activity_main), MainView, View.OnClic
             R.id.cv_main_plan_tasks -> startActivity(Intent(this, TaskCalendarActivity::class.java))
             R.id.fab_main_add_task -> startActivity(Intent(this, TaskDetailsActivity::class.java))
         }
+    }
+
+    override fun showCountTasks(
+        countTodayTasks: Int,
+        countPlanTasks: Int,
+        countAnytimeTasks: Int,
+        countSomedayTasks: Int
+    ) {
+        tv_main_count_today_tasks.text = resources.getQuantityString(
+            R.plurals.common_tasks,
+            countTodayTasks,
+            countTodayTasks
+        )
+        tv_main_count_plan_tasks.text = resources.getQuantityString(
+            R.plurals.common_tasks,
+            countPlanTasks,
+            countPlanTasks
+        )
+        tv_main_count_anytime_tasks.text = resources.getQuantityString(
+            R.plurals.common_tasks,
+            countAnytimeTasks,
+            countAnytimeTasks
+        )
+        tv_main_count_someday_tasks.text = resources.getQuantityString(
+            R.plurals.common_tasks,
+            countSomedayTasks,
+            countSomedayTasks
+        )
     }
 }
