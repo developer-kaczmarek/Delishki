@@ -7,14 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 internal class CalenderPageSnapHelper : PagerSnapHelper() {
 
-    /**
-     * The default implementation of this method in [PagerSnapHelper.calculateDistanceToFinalSnap] uses the distance
-     * between the target view center vs RecyclerView center as final snap distance. This does not always give the
-     * desired result for calendar usage. For example in a vertical calendar when the RecyclerView is taller than
-     * the item view(e.g two or more visible months), we don't actually want the item view's center to be at the
-     * center of the RecyclerView when it snaps but instead we want the item view and RecyclerView top(in vertical)
-     * or left(in horizontal) to match at the end of the snap.
-     */
     override fun calculateDistanceToFinalSnap(layoutManager: RecyclerView.LayoutManager, targetView: View): IntArray {
         return IntArray(2).apply {
             this[0] = if (layoutManager.canScrollHorizontally())

@@ -32,9 +32,7 @@ data class CalendarMonth(
 
     override fun compareTo(other: CalendarMonth): Int {
         val monthResult = yearMonth.compareTo(other.yearMonth)
-        if (monthResult == 0) { // Same yearMonth
-            return indexInSameMonth.compareTo(other.indexInSameMonth)
-        }
+        if (monthResult == 0) return indexInSameMonth.compareTo(other.indexInSameMonth)
         return monthResult
     }
 

@@ -1,8 +1,6 @@
 package io.github.kaczmarek.delishki.util.ui.calendar.models
 
-import io.github.kaczmarek.delishki.util.ui.calendar.utils.next
-import io.github.kaczmarek.delishki.util.ui.calendar.utils.previous
-import io.github.kaczmarek.delishki.util.ui.calendar.utils.yearMonth
+
 import org.threeten.bp.LocalDate
 import org.threeten.bp.YearMonth
 import java.io.Serializable
@@ -14,9 +12,9 @@ data class CalendarDay internal constructor(val date: LocalDate, val owner: DayO
     // Find the actual month on the calendar that owns this date.
     internal val positionYearMonth: YearMonth
         get() = when (owner) {
-            DayOwner.THIS_MONTH -> date.yearMonth
-            DayOwner.PREVIOUS_MONTH -> date.yearMonth.next
-            DayOwner.NEXT_MONTH -> date.yearMonth.previous
+            DayOwner.THIS_MONTH -> YearMonth.of(date.year, date.month)
+            DayOwner.PREVIOUS_MONTH -> YearMonth.of(date.year, date.month).plusMonths(1)
+            DayOwner.NEXT_MONTH ->YearMonth.of(date.year, date.month).minusMonths(1)
         }
 
     override fun toString(): String {

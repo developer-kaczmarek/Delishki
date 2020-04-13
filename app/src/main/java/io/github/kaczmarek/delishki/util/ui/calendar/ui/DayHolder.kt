@@ -1,18 +1,17 @@
 package io.github.kaczmarek.delishki.util.ui.calendar.ui
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import androidx.annotation.LayoutRes
 import androidx.annotation.Px
+import io.github.kaczmarek.delishki.R
 import io.github.kaczmarek.delishki.util.ui.calendar.models.CalendarDay
-import io.github.kaczmarek.delishki.util.ui.calendar.utils.inflate
 
 internal data class DayConfig(
     @Px val width: Int,
     @Px val height: Int,
-    @LayoutRes val dayViewRes: Int,
     val viewBinder: DayBinder<ViewContainer>
 )
 
@@ -25,18 +24,13 @@ internal class DayHolder(private val config: DayConfig) {
     var day: CalendarDay? = null
 
     fun inflateDayView(parent: LinearLayout): View {
-        dateView = parent.inflate(config.dayViewRes).apply {
-            // We ensure the layout params of the supplied child view is
-            // MATCH_PARENT so it fills the parent container.
+        dateView = LayoutInflater.from(parent.context).inflate(R.layout.component_calendarview_rv_day, parent, false).apply {
             layoutParams = layoutParams.apply {
                 height = ViewGroup.LayoutParams.MATCH_PARENT
                 width = ViewGroup.LayoutParams.MATCH_PARENT
             }
         }
         containerView = FrameLayout(parent.context).apply {
-            // This will be placed in the WeekLayout(A LinearLayout) hence we
-            // use LinearLayout.LayoutParams and set the weight appropriately.
-            // The parent's wightSum is already set to 7 to accommodate seven week days.
             layoutParams = LinearLayout.LayoutParams(config.width, config.height, 1F)
             addView(dateView)
         }
