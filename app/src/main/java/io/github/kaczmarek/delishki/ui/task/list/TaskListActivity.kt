@@ -3,11 +3,13 @@ package io.github.kaczmarek.delishki.ui.task.list
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import io.github.kaczmarek.delishki.R
 import io.github.kaczmarek.delishki.domain.task.entity.Task
 import io.github.kaczmarek.delishki.presentation.task.list.TaskListPresenter
 import io.github.kaczmarek.delishki.ui.base.BaseActivity
 import io.github.kaczmarek.delishki.ui.base.BaseView
+import io.github.kaczmarek.delishki.util.visible
 import kotlinx.android.synthetic.main.activity_list.*
 import moxy.ktx.moxyPresenter
 
@@ -39,12 +41,17 @@ class TaskListActivity : BaseActivity(R.layout.activity_list), TaskListView,
                 title = getString(R.string.common_someday)
                 iv_list_image_type.setImageResource(R.drawable.ic_vector_someday_purple)
             }
+            Task.PLANS -> {
+                title = getString(R.string.common_plan)
+                iv_list_image_type.setImageResource(R.drawable.ic_vector_plan_purple)
+            }
             else -> {
                 title = getString(R.string.common_today)
                 iv_list_image_type.setImageResource(R.drawable.ic_vector_today_purple)
             }
         }
     }
+
 
     override fun onClick(v: View?) {
 
@@ -56,6 +63,22 @@ class TaskListActivity : BaseActivity(R.layout.activity_list), TaskListView,
             count,
             count
         )
+        if (count == 0) {
+            showEmptyPlaceholder()
+        }
+    }
+
+
+    private fun showEmptyPlaceholder() {
+        cl_list_empty_placeholder.visible
+        fab_list_empty_placeholder
+            .animate()
+            .setStartDelay(500)
+            .scaleY(1f)
+            .scaleX(1f)
+            .translationY(0f)
+            .setInterpolator(DecelerateInterpolator(2f))
+            .start()
     }
 
     companion object {

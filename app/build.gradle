@@ -97,8 +97,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.3'
-
     // kapts
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     kapt "com.github.moxy-community:moxy-compiler:$moxy_version"

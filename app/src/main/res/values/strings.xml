@@ -30,4 +30,7 @@
     <string name="activity_main_good_night">Доброй ночи</string>
     <string name="activity_main_hello">Здравствуйте</string>
     <string name="activity_main_add_task">добавить</string>
+
+    <string name="activity_list_empty_title">Список заметок пуст</string>
+    <string name="activity_list_empty_subtitle">Добавим новую заметку</string>
 </resources>

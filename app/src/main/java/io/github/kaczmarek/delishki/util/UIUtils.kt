@@ -14,10 +14,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import io.github.kaczmarek.delishki.R
 
-/**
- * Created by Umalt on 30.03.2020
- */
-
 @Suppress("DEPRECATION")
 fun Drawable.changeColor(color: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -80,3 +76,12 @@ fun View.snackbar(
         snackbar.show()
     }
 }
+
+inline val View.visible: View
+    get() = apply { visibility = View.VISIBLE }
+
+inline val View.invisible: View
+    get() = apply { visibility = View.INVISIBLE }
+
+inline val View.gone: View
+    get() = apply { visibility = View.GONE }

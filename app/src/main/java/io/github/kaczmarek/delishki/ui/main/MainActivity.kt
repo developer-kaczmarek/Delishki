@@ -8,7 +8,6 @@ import io.github.kaczmarek.delishki.domain.task.entity.Task
 import io.github.kaczmarek.delishki.presentation.main.MainPresenter
 import io.github.kaczmarek.delishki.ui.base.BaseActivity
 import io.github.kaczmarek.delishki.ui.base.BaseView
-import io.github.kaczmarek.delishki.ui.task.calendar.TaskCalendarActivity
 import io.github.kaczmarek.delishki.ui.task.details.TaskDetailsActivity
 import io.github.kaczmarek.delishki.ui.task.list.TaskListActivity
 import io.github.kaczmarek.delishki.ui.task.list.TaskListActivity.Companion.KEY_TYPE_TASKS
@@ -78,7 +77,13 @@ class MainActivity : BaseActivity(R.layout.activity_main), MainView, View.OnClic
                 ).apply {
                     putExtra(KEY_TYPE_TASKS, Task.SOMEDAY)
                 })
-            R.id.cv_main_plan_tasks -> startActivity(Intent(this, TaskCalendarActivity::class.java))
+            R.id.cv_main_plan_tasks -> startActivity(
+                Intent(
+                    this,
+                    TaskListActivity::class.java
+                ).apply {
+                    putExtra(KEY_TYPE_TASKS, Task.PLANS)
+                })
             R.id.fab_main_add_task -> startActivity(Intent(this, TaskDetailsActivity::class.java))
         }
     }
